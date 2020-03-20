@@ -1,8 +1,11 @@
 import React from 'react';
+import HomeImage from '../../components/home-image/home-image.component'
 
 const Home = () => {
     return (
-        <h1>hello from home page</h1>
+        <div>
+            <HomeImage/>
+        </div>
     )
 }
 

@@ -3,11 +3,11 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 25px;
     background-color: #246bee;
   
     .logo-container {
       height: 100%;
+      width: 20%;
       padding: 25px;
       .logo{
         width: 150px; 
@@ -15,28 +15,27 @@
     }
     
     .global-options {
-      width: 15%;
+      width: auto;
       height: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding-right: 45px;
+      justify-content: left;
         
       .option {
-        padding: 10px 15px;
+        padding: 10px 12px;
       }
 
     }
 
     .login-cart {
-      width: 0%;
+      width: 20%;
       height: 100%;
       display: flex;
       align-items: center;
       justify-content: flex-end;
         
       .option {
-        padding: 10px 15px;
+        padding: 10px 12px;
       }
     }
 
