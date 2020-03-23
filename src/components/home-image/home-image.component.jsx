@@ -1,26 +1,31 @@
-import React from 'react'
-import {useHistory} from 'react-router-dom'
-import CustomButton from '../custom-button/custom-button.component'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
-import './home-image.styles.scss'
+import "./home-image.styles.scss";
 
 const HomeImage = () => {
-    const history = useHistory();
+  const history = useHistory();
 
-    const handleClick = () => {
-        history.push("/shop");
-    }
+  const handleClick = () => {
+    history.push("/shop");
+  };
 
-    return(
-        <div className="image-container">
-            <div className="banner">
-                <h1>Shop with us!</h1>
-            </div>
-            <CustomButton onClick={handleClick}>
-                our products
-            </CustomButton>      
-        </div>
-    )
-}
+  return (
+    <div className="image-container">
+      <div className="banner">
+        <h6>Shop with us!</h6>
+      </div>
+      <Button
+        className="products-button"
+        variant="primary"
+        size="lg"
+        onClick={handleClick}
+      >
+        Products
+      </Button>
+    </div>
+  );
+};
 
-export default HomeImage
+export default HomeImage;

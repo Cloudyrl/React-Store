@@ -1,36 +1,44 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import logo from '../../assets/logo_transparent2.png'
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import { Navbar, Nav, Image } from "react-bootstrap";
+import logo from "../../assets/logo_transparent2.png";
 
-import './header.styles.scss'
+import "./header.styles.scss";
 
 const header = () => {
-    return (
-        <div className="header">
-        <Link className='logo-container' to="/">
-            <img src={logo} alt="vintage store logo" className="logo"/>
-        </Link>
-        <div className="global-options">
-            <Link className='option' to='/products'>
-                HOME
-            </Link>
-            <Link className='option' to='/about'>
-                ABOUT
-            </Link>
-            <Link className='option' to='/shop'>
-                SHOP
-            </Link>
+  return (
+    <div>
+      <Navbar bg="primary" expand="lg" variant="dark">
+        <div className="logo">
+          <Link to="/">
+            <Image src={logo} fluid />
+          </Link>
         </div>
-        <div className="login-cart">
-            <Link className='option' to='/about'>
-                LOGIN
-            </Link>
-            <Link className='option' to='/cart'> 
-                CART
-            </Link>
-        </div>
-        </div>
-    )
-}
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="nav mx-auto">
+            <NavLink to="/" className="nav-link">
+              Home
+            </NavLink>
+            <NavLink to="/about" className="nav-link">
+              About
+            </NavLink>
+            <NavLink to="/shop" className="nav-link">
+              Shop
+            </NavLink>
+          </Nav>
+          <Nav className="nav justify-content-end">
+            <NavLink to="/login" className="nav-link">
+              Login
+            </NavLink>
+            <NavLink to="/cart" className="nav-link">
+              Cart
+            </NavLink>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </div>
+  );
+};
 
-export default header
+export default header;

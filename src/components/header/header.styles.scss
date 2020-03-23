@@ -1,49 +1,13 @@
-.header {
-    height: 70px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    background-color: #246bee;
-  
-    .logo-container {
-      height: 100%;
-      width: 20%;
-      padding: 25px;
-      .logo{
-        width: 150px; 
-      }
-    }
-    
-    .global-options {
-      width: auto;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: left;
-        
-      .option {
-        padding: 10px 12px;
-      }
+.nav {
+  font-size: 1.2em !important;
 
-    }
-
-    .login-cart {
-      width: 20%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-        
-      .option {
-        padding: 10px 12px;
-      }
-    }
-
-    a {
-      color :white;
-    }
-    
-    a:hover{
-      text-decoration: underline;
-    }
+  a:hover {
+    text-decoration: underline;
+    opacity: 1;
   }
+}
+
+.logo {
+  width: 140px;
+  height: 100%;
+}
