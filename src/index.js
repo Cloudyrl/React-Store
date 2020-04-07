@@ -5,13 +5,16 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import ProductProvider from "./context/product";
+import { CartProvider } from "./context/cart";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <ProductProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </CartProvider>
   </ProductProvider>,
   document.getElementById("root")
 );

@@ -1,0 +1,30 @@
+.single-product {
+  width: 85vw;
+  max-width: 1170px;
+  margin: 4rem auto;
+  display: flex;
+
+  article {
+    margin-bottom: 3rem;
+  }
+
+  .single-product-image {
+    max-width: 25rem;
+    align-self: center;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .single-product {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 3rem;
+  }
+}

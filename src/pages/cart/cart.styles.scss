@@ -1,0 +1,17 @@
+.cart-container {
+  padding: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  width: 85vw;
+  max-width: 40rem;
+  margin: 0 auto;
+  h1,
+  h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+    text-transform: capitalize;
+  }
+  .button{
+    width: 200px;
+  }
+}

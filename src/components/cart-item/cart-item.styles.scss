@@ -1,0 +1,47 @@
+.cart-item {
+  display: flex;
+  margin: 1.5rem 0;
+  width: 100%;
+  img {
+    width: 6rem;
+  }
+  h4 {
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 0;
+  }
+  h5 {
+    margin: 0.5rem 0;
+  }
+
+  .cart-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .remove-btn {
+    color: #afafaf;
+    letter-spacing: 0.3rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    width: min-content;
+  }
+
+  .title-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .actions-container {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    text-align: center;
+    .amount-button {
+      color: #007bff;
+      font-size: 1rem;
+    }
+  }
+}

@@ -14,11 +14,14 @@ body {
   background-color: #f4f4f6 !important;
 }
 
-h1,
 h2,
 h3,
 h4,
-h5,
+h5{
+  font-family: "Lato"
+}
+
+h1,
 h6 {
   font-family: "Catamaran";
   font-weight: 800 !important;
