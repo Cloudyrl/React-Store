@@ -1,4 +1,5 @@
 # React Vintage Store
+React Ecommerce site made using react hooks and strapi
 
 ## Available Scripts
 
