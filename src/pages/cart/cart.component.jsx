@@ -9,7 +9,6 @@ const Cart = () => {
   let user = false;
 
   const { cart, total } = useContext(CartContext);
-  console.log({ cart, total });
 
   if (cart.length === 0) {
     return <EmptyCart />;

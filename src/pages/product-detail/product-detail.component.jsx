@@ -1,31 +1,40 @@
 import React, { useContext } from "react";
 import { ProductContext } from "../../context/product";
-import { useParams, useHistory } from "react-router-dom";
+import { CartContext } from "../../context/cart";
+import { useParams, Link, useHistory } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import Loading from "../../components/loading/loading.component";
-import './product-detail.styles.scss'
+import "./product-detail.styles.scss";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const history = useHistory();
-  const { products, loading } = useContext(ProductContext);
-  const product = products.find(product => product.id === parseInt(id));
+  const { products } = useContext(ProductContext);
+  const {addToCart} = useContext(CartContext)
+  const product = products.find((product) => product.id === parseInt(id));
 
-  if (products.length ===0) {
+  if (products.length === 0) {
     return <Loading />;
   } else {
     const {
-      image: {url},
+      image: { url },
       title,
       price,
-      description
+      description,
     } = product;
     return (
       <section className="single-product">
-        <img src={url} alt="product-image" className="single-product-image"/>
+        <img src={url} alt="product-image" className="single-product-image" />
         <article>
           <h1>{title}</h1>
           <h2>${price}</h2>
           <p>{description}</p>
+            <Button variant="primary" onClick={()=>{
+              addToCart(product)
+              history.push("/cart")
+            }} block>
+              Add to Cart
+            </Button>
         </article>
       </section>
     );

@@ -12,13 +12,6 @@
   justify-content: center;
   align-items: center;
 
-  &:hover {
-    .products-button {
-      opacity: 0.8;
-      transition: all 0.4s linear;
-    }
-  }
-
   .banner {
     width: 100%;
   }
@@ -29,8 +22,47 @@
     margin-bottom: 20px;
     font-size: 8rem;
   }
-  .products-button {
-    font-size: 1.2em !important;
-    opacity: 0;
+
+  .products-btn {
+    &:link,
+    &:visited {
+      text-transform: uppercase;
+      text-decoration: none;
+      background-color: #fff;
+      color: #777;
+      padding: 15px 40px;
+      border-radius: 100px;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+    }
+
+    &::after{
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 100px;
+      background-color: #fff;
+      color: #777;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      position: absolute;
+      transition: all .4s;
+    }
+
+    &:hover::after{
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
   }
 }

@@ -1,40 +1,99 @@
-import React,{createContext, useState} from 'react'
+import React, { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
-var CART = [
-    {
-      id: 1,
-      title: "mac vintage computer",
-      price: 200.99,
-      image:
-        "https://res.cloudinary.com/diqqf3eq2/image/upload/v1574719863/iorxuhfensblqhn6jy5d.png",
-      amount: 3
-    },
-    {
-      id: 2,
-      title: "compaq vintage computer",
-      price: 40.99,
-      image:
-        "https://res.cloudinary.com/diqqf3eq2/image/upload/v1574624417/vx64ovkpz9nu98tqdtzn.png",
-      amount: 5
-    },
-    {
-      id: 3,
-      title: "commodore 64 vintage computer",
-      price: 129.99,
-      image:
-        "https://res.cloudinary.com/diqqf3eq2/image/upload/v1574720064/ousbxxs7ohhddd3wz18k.png",
-      amount: 4
+const getCartFromLocalStorage = () => {
+  return localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [];
+};
+
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState(getCartFromLocalStorage());
+  const [total, setTotal] = useState(0);
+  const [cartItems, setCartItems] = useState(0);
+
+  useEffect(() => {
+    // local storage
+    localStorage.setItem("cart", JSON.stringify(cart));
+    //set the acummulate amount of cart items
+    let newCartItems = cart.reduce((total, cartItem) => {
+      return (total += cartItem.amount);
+    }, 0);
+    setCartItems(newCartItems);
+
+    // set the total price of the cart items
+    let newTotal = cart.reduce((total, cartItem) => {
+      return (total += cartItem.amount * cartItem.price);
+    }, 0);
+
+    newTotal = parseFloat(newTotal.toFixed(2));
+    setTotal(newTotal);
+  }, [cart]);
+
+  const removeItem = (id) => {
+    setCart([...cart].filter((item) => item.id !== id));
+  };
+
+  const increaseAmount = (id) => {
+    const newCart = [...cart].map((item) => {
+      return item.id === id
+        ? { ...item, amount: item.amount + 1 }
+        : { ...item };
+    });
+    setCart(newCart);
+  };
+
+  const decreaseAmount = (id, amount) => {
+    if (amount === 1) {
+      removeItem(id);
+      return;
+    } else {
+      const newCart = [...cart].map((item) => {
+        return item.id === id
+          ? { ...item, amount: item.amount - 1 }
+          : { ...item };
+      });
+      setCart(newCart);
     }
-]
+  };
 
-export const CartProvider = ({children}) => {
-    const [cart,setCart] = useState(CART)
-    const [total,setTotal] = useState(0)
-    const [cartItems,setCartItems] = useState(0)
+  const addToCart = (product) => {
+    const {
+      id,
+      image: { url },
+      title,
+      price,
+    } = product;
+    const item = [...cart].find((item) => item.id === id);
+    if (item) {
+      increaseAmount(id);
+      return;
+    } else {
+      const newItem = { id, image: url, title, price, amount: 1 };
+      const newCart = [...cart, newItem];
+      setCart(newCart);
+    }
+  };
 
-    return <CartContext.Provider value={{cart,total,cartItems}}>
-        {children}
+  const clearCart = () => {
+    setCart([]);
+  };
+
+  return (
+    <CartContext.Provider
+      value={{
+        cart,
+        total,
+        cartItems,
+        removeItem,
+        increaseAmount,
+        decreaseAmount,
+        addToCart,
+        clearCart,
+      }}
+    >
+      {children}
     </CartContext.Provider>
-}
+  );
+};
