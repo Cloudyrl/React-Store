@@ -14,7 +14,7 @@ const EmptyCart = () => {
   return (
     <section className="empty-cart section">
       <h1>The cart is empty</h1>
-      <Button variant="primary" onClick={handleClick}>Let's add some products</Button>
+      <Button className="btn-primary" onClick={handleClick}>Let's add some products</Button>
     </section>
   );
 };

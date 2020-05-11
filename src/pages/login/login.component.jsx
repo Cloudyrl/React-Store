@@ -62,7 +62,7 @@ const Login = () => {
         {isEmpty && <p className="empty">Please fill out all fields</p>}
 
         {!isEmpty && (
-          <Button variant="primary" type="submit" onClick={handleSubmit} block>
+          <Button className="btn-primary" type="submit" onClick={handleSubmit} block>
             Submit
           </Button>
         )}

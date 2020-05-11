@@ -22,11 +22,11 @@ const Cart = () => {
       })}
       <h2>Total: ${total}</h2>
       {user ? (
-        <Button  variant="primary" block>
+        <Button  className="btn-primary" block>
           Checkout
         </Button>
       ) : (
-        <Button  variant="primary" block>
+        <Button className="btn-primary" block>
           Login
         </Button>
       )}
