@@ -1,12 +1,11 @@
+
+
 .image-container {
   min-height: calc(65vh);
-  background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.7) 50%,
-      rgba(255, 255, 255, 0.1)
-    ),
-    url("https://source.unsplash.com/5DLBoEX99Cs/3000x800") center/cover
-      no-repeat;
+  background: url('../../img/undraw_shopping_eii3.png');
+  background-repeat: no-repeat;
+  background-size: 700px;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,11 +13,11 @@
 
   .banner {
     width: 100%;
+    margin-left: 80%;
   }
 
   h6 {
-    text-align: center;
-    color: #ffffff;
+    color: black;
     margin-bottom: 20px;
     font-size: 8rem;
   }
@@ -26,10 +25,11 @@
   .products-btn {
     &:link,
     &:visited {
+      margin-left: 20%;
       text-transform: uppercase;
       text-decoration: none;
-      background-color: #fff;
-      color: #777;
+      background-color: #6C63FF;
+      color: #fff;
       padding: 15px 40px;
       border-radius: 100px;
       transition: all 0.2s;
@@ -51,7 +51,7 @@
       height: 100%;
       width: 100%;
       border-radius: 100px;
-      background-color: #fff;
+      background-color: #6C63FF;
       color: #777;
       top: 0;
       left: 0;

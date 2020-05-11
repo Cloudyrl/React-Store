@@ -29,7 +29,7 @@ const ProductDetail = () => {
           <h1>{title}</h1>
           <h2>${price}</h2>
           <p>{description}</p>
-            <Button variant="primary" onClick={()=>{
+            <Button className="btn-primary" onClick={()=>{
               addToCart(product)
               history.push("/cart")
             }} block>

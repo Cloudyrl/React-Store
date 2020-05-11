@@ -8,7 +8,7 @@ import "./header.styles.scss";
 const header = () => {
   return (
     <div>
-      <Navbar bg="primary" expand="lg" variant="dark">
+      <Navbar className="nav" expand="lg" variant="dark">
         <div className="logo">
           <Link to="/">
             <Image src={logo} fluid />
@@ -16,7 +16,7 @@ const header = () => {
         </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="nav mx-auto">
+          <Nav className="mx-auto">
             <NavLink to="/" className="nav-link">
               Home
             </NavLink>
@@ -27,7 +27,7 @@ const header = () => {
               Shop
             </NavLink>
           </Nav>
-          <Nav className="nav justify-content-end">
+          <Nav className="justify-content-end">
             <NavLink to="/login" className="nav-link">
               Login
             </NavLink>
