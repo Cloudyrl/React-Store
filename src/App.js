@@ -1,5 +1,5 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useContext } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 //pages
 import Home from "./pages/home/home.component";
@@ -11,6 +11,7 @@ import Login from "./pages/login/login.component";
 import ProductDetail from "./pages/product-detail/product-detail.component";
 import Shop from "./pages/shop/shop.component";
 import Alert from "./components/alert/alert.component";
+import { UserContext } from "./context/user";
 
 //components
 import Header from "./components/header/header.component";
@@ -19,10 +20,12 @@ import Header from "./components/header/header.component";
 import "./App.css";
 
 function App() {
+  const { user } = useContext(UserContext);
+
   return (
     <div>
       <Header />
-      <Alert/>
+      <Alert />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -31,7 +34,7 @@ function App() {
           <About />
         </Route>
         <Route path="/login">
-          <Login />
+          {user.token ? <Redirect to="/" /> : <Login />}
         </Route>
         <Route path="/product/:id" children={<ProductDetail />}></Route>
         <Route path="/shop">
@@ -41,7 +44,7 @@ function App() {
           <Cart />
         </Route>
         <Route path="/checkout">
-          <Checkout />
+          {user.token ? <Checkout /> : <Redirect to="/login" />}
         </Route>
         <Route path="*">
           <Error />

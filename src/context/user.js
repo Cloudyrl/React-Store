@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
 
   const logout = () => {
     setUser({ username: null, token: null });
-    localStorage.remove("user");
+    localStorage.removeItem("user")
   };
 
   const showAlert = ({ msg, type = "success" }) => {

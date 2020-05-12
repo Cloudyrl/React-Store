@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
+import {useHistory} from "react-router-dom";
 import { CartContext } from "../../context/cart";
+import { UserContext } from "../../context/user";
 import EmptyCart from "../../components/empty-cart/empty-cart.component";
 import CartItem from "../../components/cart-item/cart-item.component";
 import {Button} from "react-bootstrap"
 import "./cart.styles.scss";
 
 const Cart = () => {
-  let user = false;
-
   const { cart, total } = useContext(CartContext);
+  const { user } = useContext(UserContext);
+  const history = useHistory();
 
   if (cart.length === 0) {
     return <EmptyCart />;
@@ -21,12 +23,12 @@ const Cart = () => {
         return <CartItem key={product.id} {...product}></CartItem>;
       })}
       <h2>Total: ${total}</h2>
-      {user ? (
+      {user.token ? (
         <Button  className="btn-primary" block>
           Checkout
         </Button>
       ) : (
-        <Button className="btn-primary" block>
+        <Button className="btn-primary" onClick={()=>{history.push("/login")}} block>
           Login
         </Button>
       )}

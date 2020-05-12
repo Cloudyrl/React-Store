@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { Navbar, Nav, Image } from "react-bootstrap";
+import { UserContext } from "./../../context/user";
+import { CartContext } from "./../../context/cart";
 import logo from "../../assets/logo_transparent2.png";
 
 import "./header.styles.scss";
 
-const header = () => {
+const Header = () => {
+  const { user, logout } = useContext(UserContext);
+  const { clearCart } = useContext(CartContext);
+
   return (
     <div>
       <Navbar className="nav" expand="lg" variant="dark">
@@ -26,11 +31,27 @@ const header = () => {
             <NavLink to="/shop" className="nav-link">
               Shop
             </NavLink>
+            {user.token && <NavLink to="/checkout" className="nav-link">
+              Checkout
+            </NavLink>}
           </Nav>
           <Nav className="justify-content-end">
-            <NavLink to="/login" className="nav-link">
-              Login
-            </NavLink>
+            {user.token ? (
+              <NavLink
+                to="/"
+                onClick={() => {
+                  clearCart();
+                  logout();
+                }}
+                className="nav-link"
+              >
+                Logout
+              </NavLink>
+            ) : (
+              <NavLink to="/login" className="nav-link">
+                Login
+              </NavLink>
+            )}
             <NavLink to="/cart" className="nav-link">
               Cart
             </NavLink>
@@ -41,4 +62,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;
