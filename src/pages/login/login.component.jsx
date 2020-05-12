@@ -8,13 +8,13 @@ import "./login.styles.scss";
 
 const Login = () => {
   const history = useHistory();
-  const {login,showAlert} = useContext(UserContext);
+  const {login,alert,showAlert} = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("default");
   const [isMember, setIsMember] = useState(true);
 
-  let isEmpty = !email || !password || !username;
+  let isEmpty = !email || !password || !username || alert.show;
 
   const toggleMember = () => {
     setIsMember((prevMember) => {
@@ -25,6 +25,9 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
+    showAlert({
+      msg:'accessing user data. please wait...'
+    })
     e.preventDefault();
     let response;
     if (isMember) {

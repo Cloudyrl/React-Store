@@ -1,10 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import { Alert } from "react-bootstrap";
 import { UserContext } from "../../context/user";
 
 const AlertComponent = () => {
   const { alert, hideAlert } = useContext(UserContext);
-  console.log(alert)
+  
+  useEffect(()=>{
+    setTimeout(()=>{
+      hideAlert()
+    },6000)
+  },[alert])
+  
   return (
     <>
       {alert.show ? (
