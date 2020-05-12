@@ -32,10 +32,11 @@
   .title-container {
     display: flex;
     flex-direction: column;
+    margin-left: 5px;
   }
 
   .actions-container {
-    align-self: flex-end;
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
     margin-left: auto;

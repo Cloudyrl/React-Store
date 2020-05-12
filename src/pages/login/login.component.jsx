@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import registerUser from '../../strapi/registerUser';
+import loginUser from '../../strapi/loginUser';
 import "./login.styles.scss";
 
 const Login = () => {
@@ -24,15 +26,15 @@ const Login = () => {
     // alert
     e.preventDefault();
     let response;
-
+    console.log('hola')
     if(isMember){
-      // response = await loginUser
+      response = await loginUser({email,password})
     }else{
-      // response = await registerUser
+      response = await registerUser({email,password,username})
     }
 
     if(response){
-      //
+      console.log(response)
     }else{
       // show alert
     }
