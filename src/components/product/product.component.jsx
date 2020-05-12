@@ -12,7 +12,7 @@ const Product = ({ id, title, image, price }) => {
 
 return (
   <div className="box" onClick={handleClick}>
-    <Card style={{height: 320}}>
+    <Card>
          <Card.Img variant="top" src={image.url} className="product-image"/>
          <Card.Body>
            <Card.Title>{title}</Card.Title>
