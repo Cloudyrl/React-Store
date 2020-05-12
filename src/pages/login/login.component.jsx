@@ -8,7 +8,7 @@ import "./login.styles.scss";
 
 const Login = () => {
   const history = useHistory();
-  const {login} = useContext(UserContext);
+  const {login,showAlert} = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("default");
@@ -25,7 +25,6 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    // alert
     e.preventDefault();
     let response;
     if (isMember) {
@@ -38,9 +37,12 @@ const Login = () => {
       const {jwt:token,user:{username}} = response.data;
       const user = {username,token};
       login(user);
+      showAlert({
+        msg:`you are logged in ${username}`
+      })
       history.push('/shop');
     } else {
-      // show alert
+      showAlert({msg:'There was an error. please try again',type:'danger'})
     }
   };
 

@@ -10,6 +10,7 @@ import Error from "./pages/error/error.component";
 import Login from "./pages/login/login.component";
 import ProductDetail from "./pages/product-detail/product-detail.component";
 import Shop from "./pages/shop/shop.component";
+import Alert from "./components/alert/alert.component";
 
 //components
 import Header from "./components/header/header.component";
@@ -21,6 +22,7 @@ function App() {
   return (
     <div>
       <Header />
+      <Alert/>
       <Switch>
         <Route exact path="/">
           <Home />

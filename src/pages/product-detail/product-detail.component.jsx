@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ProductContext } from "../../context/product";
 import { CartContext } from "../../context/cart";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Loading from "../../components/loading/loading.component";
 import "./product-detail.styles.scss";
@@ -24,7 +24,7 @@ const ProductDetail = () => {
     } = product;
     return (
       <section className="single-product">
-        <img src={url} alt="product-image" className="single-product-image" />
+        <img src={url} alt="product" className="single-product-image" />
         <article>
           <h1>{title}</h1>
           <h2>${price}</h2>
