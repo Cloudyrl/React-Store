@@ -6,16 +6,19 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import ProductProvider from "./context/product";
 import { CartProvider } from "./context/cart";
+import { UserProvider } from "./context/user";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
-  <ProductProvider>
-    <CartProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </CartProvider>
-  </ProductProvider>,
+  <UserProvider>
+    <ProductProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CartProvider>
+    </ProductProvider>
+  </UserProvider>,
   document.getElementById("root")
 );
 
