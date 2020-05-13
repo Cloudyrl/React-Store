@@ -24,7 +24,7 @@ const Cart = () => {
       })}
       <h2>Total: ${total}</h2>
       {user.token ? (
-        <Button  className="btn-primary" block>
+        <Button onClick={()=>{history.push("/checkout")}} className="btn-primary" block>
           Checkout
         </Button>
       ) : (
