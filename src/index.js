@@ -7,18 +7,24 @@ import * as serviceWorker from "./serviceWorker";
 import ProductProvider from "./context/product";
 import { CartProvider } from "./context/cart";
 import { UserProvider } from "./context/user";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
+
 ReactDOM.render(
-  <UserProvider>
-    <ProductProvider>
-      <CartProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </CartProvider>
-    </ProductProvider>
-  </UserProvider>,
+  <Elements stripe={stripePromise}>
+    <UserProvider>
+      <ProductProvider>
+        <CartProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </CartProvider>
+      </ProductProvider>
+    </UserProvider>
+  </Elements>,
   document.getElementById("root")
 );
 

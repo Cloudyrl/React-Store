@@ -32,8 +32,13 @@
     text-align: center;
   }
 
+  .error {
+    margin-bottom: 0;
+  }
+
   .btn-primary{
     background-color: #6C63FF;
+    margin-top: 8px;
     border: none;
     &:hover{
       color: white;
