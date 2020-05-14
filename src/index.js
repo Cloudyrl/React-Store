@@ -11,7 +11,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
+const stripePromise = loadStripe('pk_test_OMQXGO8SGFABJ7nfm7GlLMjt009VmTPCfC');
 
 ReactDOM.render(
   <Elements stripe={stripePromise}>
