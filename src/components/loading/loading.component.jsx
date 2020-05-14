@@ -12,7 +12,7 @@ const styles = css`
 const Loading = () => {
   return (
     <div className="loading">
-      <PacmanLoader css={styles} size={70} color={"#246bee"} />
+      <PacmanLoader css={styles} size={70} color={"#6C63FF"} />
     </div>
   );
 };
