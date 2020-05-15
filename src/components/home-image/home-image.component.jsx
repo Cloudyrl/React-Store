@@ -8,10 +8,10 @@ const HomeImage = () => {
     <div className="image-container">
       <div className="banner">
         <h6>Shop with us!</h6>
-      </div>
-      <Link to="/shop" className="products-btn">
+        <Link to="/shop" className="products-btn">
         Products
       </Link>
+      </div>
     </div>
   );
 };
