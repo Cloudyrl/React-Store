@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "./../../context/user";
 import { CartContext } from "./../../context/cart";
-import submitOrder from '../../strapi/submitOrder'
+import submitOrder from "../../strapi/submitOrder";
 import EmptyCart from "./../../components/empty-cart/empty-cart.component";
 import { Form, Button } from "react-bootstrap";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
@@ -21,31 +21,45 @@ const Checkout = (props) => {
 
   const isEmpty = !name || alert.show;
 
+  let hide = false;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    showAlert({msg:"submitting order... please wait"})
-    try{
+    showAlert({ msg: "submitting order... please wait" });
+    try {
+      hide = true;
       const cardElement = elements.getElement(CardElement);
       const response = await stripe.createToken(cardElement);
-      const {token} = response
-      if(token){
-        setError('')
-        const {id} = token;
-        let order = await submitOrder({name,total,items:cart,stripeToken:id,userToken:user.token})
-        if(order){
-          showAlert({msg:'your order is complete'});
+      const { token } = response;
+      if (token) {
+        setError("");
+        const { id } = token;
+        let order = await submitOrder({
+          name,
+          total,
+          items: cart,
+          stripeToken: id,
+          userToken: user.token,
+        });
+        if (order) {
+          showAlert({ msg: "your order is complete" });
           clearCart();
-          history.push('/');
+          history.push("/");
+          hide = false;
           return;
-        }else{
-          showAlert({msg:'there was an error trying to submit your order. please try again!',type:'danger'})
+        } else {
+          showAlert({
+            msg:
+              "there was an error trying to submit your order. please try again!",
+            type: "danger",
+          });
         }
-      }else{
-        hideAlert()
-        setError(response.error.message)
+      } else {
+        hideAlert();
+        setError(response.error.message);
       }
-    }catch(error){
-      console.log(error) 
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -79,18 +93,16 @@ const Checkout = (props) => {
         </div>
         <CardElement />
         {error && <p className="empty error">{error}</p>}
-        {isEmpty ? (
-          <p className="empty">Please fill out all fields</p>
-        ) : (
-          <Button
-            className="btn-primary"
-            type="submit"
-            onClick={handleSubmit}
-            block
-          >
-            Submit
-          </Button>
-        )}
+        {isEmpty && <p className="empty">Please fill out all fields</p>}
+        <Button
+          className="btn-primary"
+          type="submit"
+          onClick={handleSubmit}
+          disabled={isEmpty || hide}
+          block
+        >
+          Submit
+        </Button>
       </div>
     );
   }
