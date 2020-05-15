@@ -3,6 +3,8 @@ React Ecommerce site made using react hooks, stripe as the payment processing pl
 
 Demo: https://vintage-clothing-store.netlify.app
 
+The strapi api runs on a heroku free dyno, so it is possible that the server is sleeping when the app is making the first api call to fetch the products. It should't take more than 30 sec for it to wake up.
+
 ## Available Scripts
 
 In the project directory, you can run:
