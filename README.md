@@ -8,7 +8,7 @@ The strapi api runs on a heroku free dyno, so it is possible that the server is 
 ## Available Scripts
 
 In the project directory, you can run:
-### `npm install
+### `npm install`
 
 Install all necessary dependencies for the project to run.
 
