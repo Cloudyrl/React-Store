@@ -83,17 +83,15 @@ const Login = () => {
         </Form.Group>
 
         {isEmpty && <p className="empty">Please fill out all fields</p>}
-
-        {!isEmpty && (
           <Button
             className="btn-primary"
             type="submit"
             onClick={handleSubmit}
+            disabled={isEmpty}
             block
           >
             Submit
           </Button>
-        )}
         <p className="toggle">
           {isMember ? "Need to register?" : "Already a member?"}
           <button type="button" onClick={toggleMember}>

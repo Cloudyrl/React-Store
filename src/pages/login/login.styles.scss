@@ -54,5 +54,10 @@
       background-color: darken(#6C63FF,7.5%) !important;
       box-shadow: 0 0 0 0.2rem rgba(107, 99, 255, 0.479) !important;
     }
+
+    &:disabled{
+      background-color:rgba(107, 99, 255, 0.794) !important;
+      box-shadow: none !important;
+    }
   }
 }
